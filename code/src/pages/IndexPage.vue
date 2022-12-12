@@ -1,17 +1,22 @@
 <template>
-  <q-page class="flex flex-center">
-    <img
-      alt="Quasar logo"
-      src="~assets/quasar-logo-vertical.svg"
-      style="width: 200px; height: 200px"
-    >
+  <q-page>
+    <q-checkbox v-model="val" />
+    {{ counter }}
   </q-page>
+  <q-card class="my-card">
+    <q-card-section>
+      {{ counter }}
+    </q-card-section>
+  </q-card>
 </template>
 
-<script>
-import { defineComponent } from 'vue'
+<script setup>
+import { ref } from "vue";
 
-export default defineComponent({
-  name: 'IndexPage'
-})
+const name = ref(false);
 </script>
+<style>
+#wort {
+  width: 20%;
+}
+</style>
