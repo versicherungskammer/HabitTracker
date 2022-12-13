@@ -6,7 +6,7 @@
       </q-card-section>
     </q-card>
   </div>
-  <div id="addbutton">
+  <div id="button">
     <q-btn
       color="white"
       text-color="black"
@@ -22,7 +22,7 @@
         <q-card-section class="q-pt-none">
           <q-input
             dense
-            v-model="habit"
+            v-model="habittitle"
             autofocus
             @keyup.enter="prompt = false"
           />
@@ -30,7 +30,7 @@
 
         <q-card-actions class="text-primary">
           <q-btn flat label="Cancel" v-close-popup />
-          <q-btn flat label="Add Habit" v-close-popup />
+          <q-btn flat label="Add Habit" v-close-popup @click="addHabit" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -40,18 +40,14 @@
 <script setup>
 import { ref } from "vue";
 const addbutton = ref(false);
-//const addHabit = () => {
-//habits.value.push({ title: "irgendwas", ready: false });
-//};
-const habits = ref([
-  { title: "Sport machen", ready: false },
-  { title: "Duschen", ready: false },
-  { title: "Trinken", ready: false },
-  { title: "Essen", ready: false },
-]);
+const habittitle = ref();
+const addHabit = () => {
+  habits.value.push({ title: habittitle.value, ready: false });
+};
+const habits = ref([]);
 </script>
 <style>
-#addbutton {
+#button {
   display: flex;
   justify-content: center;
   align-items: center;
