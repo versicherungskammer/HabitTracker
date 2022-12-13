@@ -2,7 +2,7 @@
   <div class="q-pa-md" v-for="habit in habits">
     <q-card class="my-card">
       <q-card-section>
-        {{ habit.title }} <q-checkbox v-model="habit.ready"> </q-checkbox>
+        <q-checkbox v-model="habit.ready"> </q-checkbox> {{ habit.title }}
       </q-card-section>
     </q-card>
   </div>
