@@ -7,12 +7,39 @@
     </q-card>
   </div>
   <div id="addbutton">
-    <q-btn color="white" text-color="black" label="+" />
+    <q-btn
+      color="white"
+      text-color="black"
+      label="+"
+      @click="addbutton = true"
+    />
+    <q-dialog v-model="addbutton" persistent>
+      <q-card style="min-width: 350px">
+        <q-card-section>
+          <div class="text-h6">Your Habit</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input
+            dense
+            v-model="habit"
+            autofocus
+            @keyup.enter="prompt = false"
+          />
+        </q-card-section>
+
+        <q-card-actions class="text-primary">
+          <q-btn flat label="Cancel" v-close-popup />
+          <q-btn flat label="Add Habit" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
+const addbutton = ref(false);
 //const addHabit = () => {
 //habits.value.push({ title: "irgendwas", ready: false });
 //};
