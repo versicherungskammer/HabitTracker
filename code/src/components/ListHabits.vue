@@ -6,7 +6,9 @@
       </q-card-section>
     </q-card>
   </div>
-  <q-btn color="white" text-color="black" label="+" />
+  <div id="addbutton">
+    <q-btn color="white" text-color="black" label="+" />
+  </div>
 </template>
 
 <script setup>
@@ -21,3 +23,10 @@ const habits = ref([
   { title: "Essen", ready: false },
 ]);
 </script>
+<style>
+#addbutton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
