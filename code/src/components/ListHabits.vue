@@ -12,13 +12,13 @@
 
         <q-btn-dropdown flat class="more" color="black" icon="more_horiz">
           <q-list>
-            <q-item clickable v-close-popup @click="onItemClick">
+            <q-item clickable v-close-popup @click="deletehabit(habit.id)">
               <q-item-section>
                 <q-item-label>Löschen</q-item-label>
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-close-popup @click="onItemClick">
+            <q-item clickable v-close-popup @click="editbutton = true">
               <q-item-section>
                 <q-item-label>Bearbeiten</q-item-label>
               </q-item-section>
@@ -28,14 +28,8 @@
       </q-card-section>
     </q-card>
   </div>
-  <div class="button">
-    <q-btn
-      color="white"
-      text-color="black"
-      label="+"
-      @click="addbutton = true"
-    />
-    <q-dialog v-model="addbutton" persistent>
+  <div>
+    <q-dialog v-model="editbutton" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
           <div class="text-h6">Your Habit</div>
@@ -44,39 +38,91 @@
         <q-card-section class="q-pt-none">
           <q-input
             dense
-            v-model="habittitle"
+            v-model="habittitle2"
             autofocus
             @keyup.enter="prompt = false"
-          />
+            >{{}}</q-input
+          >
         </q-card-section>
 
         <q-card-actions class="text-primary">
           <q-btn flat label="Cancel" v-close-popup />
-          <q-btn flat label="Add Habit" v-close-popup @click="addHabit" />
+          <q-btn
+            flat
+            label="Edit Habit"
+            v-close-popup
+            @click="edithabit(habit.id)"
+          />
         </q-card-actions>
       </q-card>
     </q-dialog>
+    <div class="button">
+      <q-btn
+        color="white"
+        text-color="black"
+        label="+"
+        @click="addbutton = true"
+      />
+      <q-dialog v-model="addbutton" persistent>
+        <q-card style="min-width: 350px">
+          <q-card-section>
+            <div class="text-h6">Your Habit</div>
+          </q-card-section>
+
+          <q-card-section class="q-pt-none">
+            <q-input
+              dense
+              v-model="habittitle"
+              autofocus
+              @keyup.enter="prompt = false"
+            />
+          </q-card-section>
+
+          <q-card-actions class="text-primary">
+            <q-btn flat label="Cancel" v-close-popup />
+            <q-btn flat label="Add Habit" v-close-popup @click="addHabit" />
+          </q-card-actions>
+        </q-card>
+      </q-dialog>
+    </div>
   </div>
 </template>
 
 <script setup>
 import { ref } from "vue";
 const addbutton = ref(false);
+const editbutton = ref(false);
 const habits = ref([]);
 const habittitle = ref();
+const habittitle2 = ref();
 let counter = 0;
 const card = ref();
 const addHabit = () => {
-  habits.value.push({ id: ++counter, title: habittitle.value, ready: false });
+  habits.value.push({ id: counter++, title: habittitle.value, ready: false });
   habittitle.value = "";
 };
 
 const changeToTransparent = (habit) => {
   if (habit.ready) {
-    document.getElementById(habit.id).style.backgroundColor = "green";
+    document.getElementById(habit.id).style.backgroundColor =
+      "rgba(47,87,47,0.25)";
   } else {
     document.getElementById(habit.id).style.backgroundColor = "white";
   }
+};
+
+const edithabit = (id) => {
+  habits.value.splice(id, 1, {
+    id: id,
+    title: habittitle2.value,
+    ready: false,
+  });
+  console.log(id);
+};
+
+const deletehabit = (id) => {
+  console.log(id);
+  habits.value.splice(id, 1);
 };
 </script>
 <style>
