@@ -9,7 +9,7 @@
         >
         </q-checkbox>
         {{ habit.title }}
-        <q-btn flat class="settings" color="black" icon="more_horiz" />
+        <q-btn flat class="more" color="black" icon="more_horiz" />
       </q-card-section>
     </q-card>
   </div>
@@ -71,7 +71,7 @@ const changeToTransparent = (habit) => {
   align-items: center;
 }
 
-.settings {
+.more {
   background-color: transparent;
   position: absolute;
   right: 1%;
