@@ -27,43 +27,9 @@
         </q-btn-dropdown>
       </q-card-section>
     </q-card>
-  </div>
-  <div>
-    <q-dialog v-model="editbutton" persistent>
-      <q-card style="min-width: 350px">
-        <q-card-section>
-          <div class="text-h6">Your Habit</div>
-        </q-card-section>
 
-        <q-card-section class="q-pt-none">
-          <q-input
-            dense
-            v-model="habittitle2"
-            autofocus
-            @keyup.enter="prompt = false"
-            >{{}}</q-input
-          >
-        </q-card-section>
-
-        <q-card-actions class="text-primary">
-          <q-btn flat label="Cancel" v-close-popup />
-          <q-btn
-            flat
-            label="Edit Habit"
-            v-close-popup
-            @click="edithabit(habit.id)"
-          />
-        </q-card-actions>
-      </q-card>
-    </q-dialog>
-    <div class="button">
-      <q-btn
-        color="white"
-        text-color="black"
-        label="+"
-        @click="addbutton = true"
-      />
-      <q-dialog v-model="addbutton" persistent>
+    <div>
+      <q-dialog v-model="editbutton" persistent>
         <q-card style="min-width: 350px">
           <q-card-section>
             <div class="text-h6">Your Habit</div>
@@ -72,19 +38,54 @@
           <q-card-section class="q-pt-none">
             <q-input
               dense
-              v-model="habittitle"
+              v-model="habittitle2"
               autofocus
               @keyup.enter="prompt = false"
-            />
+              >{{ habit.id }}</q-input
+            >
           </q-card-section>
 
           <q-card-actions class="text-primary">
             <q-btn flat label="Cancel" v-close-popup />
-            <q-btn flat label="Add Habit" v-close-popup @click="addHabit" />
+            <q-btn
+              flat
+              label="Edit Habit"
+              v-close-popup
+              @click="edithabit(habit.id)"
+            />
           </q-card-actions>
         </q-card>
       </q-dialog>
     </div>
+  </div>
+  <div class="button">
+    <q-btn
+      color="white"
+      text-color="black"
+      label="+"
+      @click="addbutton = true"
+    />
+    <q-dialog v-model="addbutton" persistent>
+      <q-card style="min-width: 350px">
+        <q-card-section>
+          <div class="text-h6">Your Habit</div>
+        </q-card-section>
+
+        <q-card-section class="q-pt-none">
+          <q-input
+            dense
+            v-model="habittitle"
+            autofocus
+            @keyup.enter="prompt = false"
+          />
+        </q-card-section>
+
+        <q-card-actions class="text-primary">
+          <q-btn flat label="Cancel" v-close-popup />
+          <q-btn flat label="Add Habit" v-close-popup @click="addHabit" />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
   </div>
 </template>
 
@@ -99,6 +100,7 @@ let counter = 0;
 const card = ref();
 const addHabit = () => {
   habits.value.push({ id: counter++, title: habittitle.value, ready: false });
+
   habittitle.value = "";
 };
 
