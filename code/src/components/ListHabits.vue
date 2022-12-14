@@ -1,12 +1,18 @@
 <template>
   <div class="q-pa-md" v-for="habit in habits">
-    <q-card class="my-card">
+    <q-card class="my-card" :id="habit.id" ref="card">
       <q-card-section>
-        <q-checkbox v-model="habit.ready"> </q-checkbox> {{ habit.title }}
+        <q-checkbox
+          id="checkbox"
+          v-model="habit.ready"
+          @click="changeToTransparent(habit)"
+        >
+        </q-checkbox>
+        {{ habit.title }}
       </q-card-section>
     </q-card>
   </div>
-  <div id="button">
+  <div class="button">
     <q-btn
       color="white"
       text-color="black"
@@ -40,14 +46,25 @@
 <script setup>
 import { ref } from "vue";
 const addbutton = ref(false);
-const habittitle = ref();
-const addHabit = () => {
-  habits.value.push({ title: habittitle.value, ready: false });
-};
 const habits = ref([]);
+const habittitle = ref();
+let counter = 0;
+const card = ref();
+const addHabit = () => {
+  habits.value.push({ id: ++counter, title: habittitle.value, ready: false });
+  habittitle.value = "";
+};
+
+const changeToTransparent = (habit) => {
+  if (habit.ready) {
+    document.getElementById(habit.id).style.backgroundColor = "green";
+  } else {
+    document.getElementById(habit.id).style.backgroundColor = "white";
+  }
+};
 </script>
 <style>
-#button {
+.button {
   display: flex;
   justify-content: center;
   align-items: center;
