@@ -9,7 +9,22 @@
         >
         </q-checkbox>
         {{ habit.title }}
-        <q-btn flat class="more" color="black" icon="more_horiz" />
+
+        <q-btn-dropdown flat class="more" color="black" icon="more_horiz">
+          <q-list>
+            <q-item clickable v-close-popup @click="onItemClick">
+              <q-item-section>
+                <q-item-label>Löschen</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup @click="onItemClick">
+              <q-item-section>
+                <q-item-label>Bearbeiten</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
       </q-card-section>
     </q-card>
   </div>
