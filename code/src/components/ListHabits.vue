@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md" v-for="habit in habits">
+  <div class="q-pa-md" v-for="(habit, index) in habits" :key="habit.id">
     <q-card class="my-card" :id="habit.id" ref="card">
       <q-card-section>
         <q-checkbox
@@ -12,13 +12,13 @@
 
         <q-btn-dropdown flat class="more" color="black" icon="more_horiz">
           <q-list>
-            <q-item clickable v-close-popup @click="deletehabit(habit.id)">
+            <q-item clickable v-close-popup @click="deletehabit(index)">
               <q-item-section>
                 <q-item-label>Löschen</q-item-label>
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-close-popup @click="edithabitbutton(habit.id)">
+            <q-item clickable v-close-popup @click="edithabitbutton(index)">
               <q-item-section>
                 <q-item-label>Bearbeiten</q-item-label>
               </q-item-section>
@@ -39,8 +39,7 @@
               v-model="habittitle2"
               autofocus
               @keyup.enter="prompt = false"
-              >{{ habit.id }}</q-input
-            >
+            ></q-input>
           </q-card-section>
 
           <q-card-actions class="text-primary">
@@ -137,11 +136,13 @@ const edithabit = () => {
     ready: false,
   });
   habittitle2.value = "";
+  savetolocalstorage();
 };
 
 const deletehabit = (id) => {
-  console.log(id);
   habits.value.splice(id, 1);
+  console.log(id);
+  savetolocalstorage();
 };
 </script>
 <style>
