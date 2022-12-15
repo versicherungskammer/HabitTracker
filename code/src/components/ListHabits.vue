@@ -14,13 +14,13 @@
           <q-list>
             <q-item clickable v-close-popup @click="deletehabit(index)">
               <q-item-section>
-                <q-item-label>Löschen</q-item-label>
+                <q-item-label>Delete</q-item-label>
               </q-item-section>
             </q-item>
 
             <q-item clickable v-close-popup @click="edithabitbutton(index)">
               <q-item-section>
-                <q-item-label>Bearbeiten</q-item-label>
+                <q-item-label>Edit</q-item-label>
               </q-item-section>
             </q-item>
           </q-list>
@@ -65,7 +65,7 @@
     <q-btn
       class="deleteButton"
       text-color="black"
-      label="Alles löschen"
+      label="delete all"
       @click="deleteAll"
     />
     <q-dialog v-model="addbutton" persistent>
