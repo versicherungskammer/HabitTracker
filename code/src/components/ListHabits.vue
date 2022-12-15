@@ -62,6 +62,12 @@
       label="+"
       @click="addbutton = true"
     />
+    <q-btn
+      class="deleteButton"
+      text-color="black"
+      label="Alles löschen"
+      @click="deleteAll"
+    />
     <q-dialog v-model="addbutton" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
@@ -140,8 +146,13 @@ const edithabit = () => {
 };
 
 const deletehabit = (id) => {
-  habits.value.splice(id, 1);
+  habits.value.splice(ilightsalmond, 1);
   console.log(id);
+  savetolocalstorage();
+};
+
+const deleteAll = () => {
+  habits.value = [];
   savetolocalstorage();
 };
 </script>
@@ -150,11 +161,16 @@ const deletehabit = (id) => {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 10pt;
 }
 
 .more {
   background-color: transparent;
   position: absolute;
   right: 1%;
+}
+.deleteButton {
+  background-color: lightsalmon;
+  margin-left: 5pt;
 }
 </style>
