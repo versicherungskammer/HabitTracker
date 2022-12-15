@@ -18,7 +18,7 @@
               </q-item-section>
             </q-item>
 
-            <q-item clickable v-close-popup @click="editbutton = true">
+            <q-item clickable v-close-popup @click="edithabitbutton(habit.id)">
               <q-item-section>
                 <q-item-label>Bearbeiten</q-item-label>
               </q-item-section>
@@ -27,14 +27,12 @@
         </q-btn-dropdown>
       </q-card-section>
     </q-card>
-
     <div>
       <q-dialog v-model="editbutton" persistent>
         <q-card style="min-width: 350px">
           <q-card-section>
             <div class="text-h6">Your Habit</div>
           </q-card-section>
-
           <q-card-section class="q-pt-none">
             <q-input
               dense
@@ -97,6 +95,7 @@ const habits = ref([]);
 const habittitle = ref();
 const habittitle2 = ref();
 let counter = 0;
+let idtoedit = 0;
 const card = ref();
 const addHabit = () => {
   habits.value.push({ id: counter++, title: habittitle.value, ready: false });
@@ -113,13 +112,18 @@ const changeToTransparent = (habit) => {
   }
 };
 
-const edithabit = (id) => {
-  habits.value.splice(id, 1, {
-    id: id,
+const edithabitbutton = (id) => {
+  editbutton.value = true;
+  idtoedit = id;
+};
+
+const edithabit = () => {
+  habits.value.splice(idtoedit, 1, {
+    id: idtoedit,
     title: habittitle2.value,
     ready: false,
   });
-  console.log(id);
+  habittitle2.value = "";
 };
 
 const deletehabit = (id) => {
