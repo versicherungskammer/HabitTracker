@@ -120,7 +120,7 @@ const savetolocalstorage = () => {
 const changeToTransparent = (habit) => {
   if (habit.ready) {
     document.getElementById(habit.id).style.backgroundColor =
-      "rgba(47,87,47,0.25)";
+      "rgba(170,193,200,0.25)";
   } else {
     document.getElementById(habit.id).style.backgroundColor = "";
   }
@@ -166,7 +166,7 @@ const deleteAll = () => {
   right: 1%;
 }
 .deleteButton {
-  background-color: lightsalmon;
+  background-color: rgb(170, 193, 200);
   margin-left: 5pt;
 }
 </style>
