@@ -3,6 +3,7 @@
     <q-header elevated>
       <q-toolbar>
         <q-toolbar-title> Habit Tracker </q-toolbar-title>
+        <q-btn flat icon="visibility" @click="toggleDarkMode"></q-btn>
       </q-toolbar>
     </q-header>
     <q-page-container>
@@ -11,5 +12,12 @@
   </q-layout>
 </template>
 
-<script setup></script>
+<script setup>
+import { useQuasar } from "quasar";
+const $q = useQuasar();
+
+const toggleDarkMode = () => {
+  $q.dark.toggle();
+};
+</script>
 <style></style>

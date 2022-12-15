@@ -10,7 +10,7 @@
         </q-checkbox>
         {{ habit.title }}
 
-        <q-btn-dropdown flat class="more" color="black" icon="more_horiz">
+        <q-btn-dropdown flat class="more" icon="more_horiz">
           <q-list>
             <q-item clickable v-close-popup @click="deletehabit(index)">
               <q-item-section>
@@ -56,12 +56,7 @@
     </div>
   </div>
   <div class="button">
-    <q-btn
-      color="white"
-      text-color="black"
-      label="+"
-      @click="addbutton = true"
-    />
+    <q-btn outline label="+" @click="addbutton = true" />
     <q-btn
       class="deleteButton"
       text-color="black"
@@ -94,6 +89,7 @@
 
 <script setup>
 import { ref } from "vue";
+
 const addbutton = ref(false);
 const editbutton = ref(false);
 const habits = ref([]);
@@ -126,7 +122,7 @@ const changeToTransparent = (habit) => {
     document.getElementById(habit.id).style.backgroundColor =
       "rgba(47,87,47,0.25)";
   } else {
-    document.getElementById(habit.id).style.backgroundColor = "white";
+    document.getElementById(habit.id).style.backgroundColor = "";
   }
 };
 
