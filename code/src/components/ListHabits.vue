@@ -97,10 +97,23 @@ const habittitle2 = ref();
 let counter = 0;
 let idtoedit = 0;
 const card = ref();
+
 const addHabit = () => {
   habits.value.push({ id: counter++, title: habittitle.value, ready: false });
-
+  savetolocalstorage();
   habittitle.value = "";
+};
+
+const getlocalstorage = () => {
+  if (localStorage.getItem("myhabits") != null) {
+    habits.value = JSON.parse(localStorage.getItem("myhabits"));
+  }
+};
+
+getlocalstorage();
+
+const savetolocalstorage = () => {
+  localStorage.setItem("myhabits", JSON.stringify(habits.value));
 };
 
 const changeToTransparent = (habit) => {
