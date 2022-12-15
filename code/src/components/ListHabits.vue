@@ -146,7 +146,7 @@ const edithabit = () => {
 };
 
 const deletehabit = (id) => {
-  habits.value.splice(ilightsalmond, 1);
+  habits.value.splice(id, 1);
   console.log(id);
   savetolocalstorage();
 };
