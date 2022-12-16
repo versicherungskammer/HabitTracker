@@ -2,7 +2,7 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-toolbar-title> Einkaufswagen </q-toolbar-title>
+        <q-toolbar-title> Einkaufsliste </q-toolbar-title>
         <q-btn flat icon="visibility" @click="toggleDarkMode"></q-btn>
       </q-toolbar>
     </q-header>
