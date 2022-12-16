@@ -45,7 +45,7 @@ module.exports = configure(function (/* ctx */) {
       },
 
       vueRouterMode: "hash",
-      publicPath: "/HabitTracker",
+      publicPath: "/ShoppingList",
       // available values: 'hash', 'history'
       // vueRouterBase,
       // vueDevtools,

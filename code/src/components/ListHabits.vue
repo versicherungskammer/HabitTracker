@@ -31,7 +31,7 @@
       <q-dialog v-model="editbutton" persistent>
         <q-card style="min-width: 350px">
           <q-card-section>
-            <div class="text-h6">Your Habit</div>
+            <div class="text-h6">Your Item</div>
           </q-card-section>
           <q-card-section class="q-pt-none">
             <q-input
@@ -46,7 +46,7 @@
             <q-btn flat label="Cancel" v-close-popup />
             <q-btn
               flat
-              label="Edit Habit"
+              label="Edit Item"
               v-close-popup
               @click="edithabit(habit.id)"
             />
@@ -66,7 +66,7 @@
     <q-dialog v-model="addbutton" persistent>
       <q-card style="min-width: 350px">
         <q-card-section>
-          <div class="text-h6">Your Habit</div>
+          <div class="text-h6">Your Item</div>
         </q-card-section>
 
         <q-card-section class="q-pt-none">
@@ -80,7 +80,7 @@
 
         <q-card-actions class="text-primary">
           <q-btn flat label="Cancel" v-close-popup />
-          <q-btn flat label="Add Habit" v-close-popup @click="addHabit" />
+          <q-btn flat label="Add Item" v-close-popup @click="addHabit" />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -121,8 +121,10 @@ const changeToTransparent = (habit) => {
   if (habit.ready) {
     document.getElementById(habit.id).style.backgroundColor =
       "rgba(170,193,200,0.25)";
+    savetolocalstorage();
   } else {
     document.getElementById(habit.id).style.backgroundColor = "";
+    savetolocalstorage();
   }
 };
 

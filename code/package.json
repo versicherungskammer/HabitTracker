@@ -1,8 +1,8 @@
 {
-  "name": "habittracker",
+  "name": "shoppinglist",
   "version": "0.0.1",
-  "description": "tracked habit",
-  "productName": "Habit Tracker",
+  "description": "",
+  "productName": "Shopping List",
   "author": "",
   "private": true,
   "scripts": {
